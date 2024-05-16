@@ -13,9 +13,18 @@ def check_account(data, i):
             # sb.click('input#email', timeout=3)
             # sb.update_text('input#email', text)
             # sb.click('button:contains(Next)', timeout=3)
-            if sb.assert_text('password') or sb.assert_text('Passkey') or sb.assert_text('passkey'):
+            if sb.assert_text('password'):
                 print(f'{data.iloc[i, 0]} is exist!!!')
                 data.iloc[i, -1] = True
+            elif sb.assert_text('Passkey'):
+                print(f'{data.iloc[i, 0]} is exist!!!')
+                data.iloc[i, -1] = True
+            elif sb.assert_text('passkey'):
+                print(f'{data.iloc[i, 0]} is exist!!!')
+                data.iloc[i, -1] = True
+            else:
+                print(f'{data.iloc[i, 0]} is not exist!!!')
+                data.iloc[i, -1] = False
         except Exception as e:
             print(f'{data.iloc[i, 0]} is not exist!!!')
             data.iloc[i, -1] = False
