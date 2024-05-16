@@ -4,7 +4,7 @@ import pandas as pd
 
 def check_account(data, i):
     url = 'https://accounts.binance.com/en/login'
-    with SB(uc=True, incognito=True) as sb:
+    with SB(uc=True, incognito=True, proxy='udksqrvp-rotate:0irkbd10fjkn@p.webshare.io:80') as sb:
         try:
             sb.maximize_window()
             sb.driver.uc_open_with_reconnect(url, reconnect_time=3)
@@ -24,8 +24,8 @@ def check_account(data, i):
 if __name__ == '__main__':
     data = pd.read_excel('binance test.xlsx', header=0, sheet_name='Sheet1')
     data['is_exist'] = None
-    # for i in range(len(data)):
-    for i in range(2):
+    for i in range(len(data)):
+    # for i in range(2):
         check_account(data, i)
     data.to_csv('checked_email.csv')
     #
