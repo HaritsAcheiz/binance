@@ -19,7 +19,7 @@ def check_account(data, i):
         except Exception as e:
             print(f'{data.iloc[i, 0]} is not exist!!!')
             data.iloc[i, -1] = False
-            input('press any key')
+            # input('press any key')
 
 if __name__ == '__main__':
     data = pd.read_excel('binance test.xlsx', header=0, sheet_name='Sheet1')
